@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Flask</title>
+</head>
+
+<body>
+    <!-- <h1>Index Page</h1>
+<h3>Create a User</h3>
+<form action='/users' method='post'>
+    <label for='name'>Name:</label>
+    <input type='text' name='name'>
+    <label for='email'>Email:</label>
+    <input type='text' name='email'>
+    <input type='submit' value='create user'>
+</form> -->
+
+
+    <h1>Hello Flask</h1>
+    <h2>My Flask Template</h2>
+    <p>Phrase: {{ phrase }} </p>
+    <p>Times: {{ times }} </p>
+
+    {% for x in range (0,times): %}
+    <p>{{ phrase }}</p>
+    {% endfor %}
+
+    {% if phrase == "Hello!" %}
+    <p>The phrase says hello.</p>
+    {% endif %}
+</body>
+
+</html>
