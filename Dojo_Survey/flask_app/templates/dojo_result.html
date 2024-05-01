@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Submitted Info</h1>
+        <p>Name: {{ form_data['name'] }}</p>
+        <p>Dojo Location: {{ form_data['location'] }}</p>
+        <p>Favorite Language: {{ form_data['language'] }}</p>
+        <p>Comment: {{ form_data['comment'] }}</p>
+    </div>
+    <div class="container mt-5">
+        <a href="{{ url_for('go_back') }}" class="btn btn-primary">Go Back</a>
+    </div>
+</body>
+</html>
