@@ -78,39 +78,39 @@ def dashboardPage():
     return render_template('dashboard.html', users=users, loggedUser=loggedUser)
 
 
-# @app.route('/profile/<int:id>')
-# def profile(id):
-#     if 'user_id' not in session:
-#         return redirect('/')
-#     data ={
-#         'id': id
-#     }
-#     user = User.get_user_by_id(data)
-#     return render_template('profile.html', user=user)
+@app.route('/profile/<int:id>')
+def profile(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    data ={
+        'id': id
+    }
+    user = User.get_user_by_id(data)
+    return render_template('profile.html', user=user)
 
 
 
-# @app.route('/edit/user')
-# def editProfile():
-#     if 'user_id' not in session:
-#         return redirect('/')
-#     data ={
-#         'id': session['user_id']
-#     }
-#     user = User.get_user_by_id(data)
-#     return render_template('editProfile.html', user=user)
+@app.route('/edit/user')
+def editProfile():
+    if 'user_id' not in session:
+        return redirect('/')
+    data ={
+        'id': session['user_id']
+    }
+    user = User.get_user_by_id(data)
+    return render_template('editProfile.html', user=user)
 
-# @app.route('/update/user', methods = ['POST'])
-# def updateUser():
-#     if 'user_id' not in session:
-#         return redirect('/')
-#     data = {
-#         'id': session['user_id'],
-#         'username': request.form['username'],
-#         'email': request.form['email']
-#     }
-#     User.update_user(data)
-#     return redirect('/dashboard')
+@app.route('/update/user', methods = ['POST'])
+def updateUser():
+    if 'user_id' not in session:
+        return redirect('/')
+    data = {
+        'id': session['user_id'],
+        'username': request.form['username'],
+        'email': request.form['email']
+    }
+    User.update_user(data)
+    return redirect('/dashboard')
 
 @app.route('/delete')
 def delete():
