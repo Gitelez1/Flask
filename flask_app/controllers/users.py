@@ -1,6 +1,6 @@
 from flask_app import app
 from flask_app.models.user import User
-from flask_app.models.recipe import Recipe
+from flask_app.models.painting import Painting
 from flask import Flask, render_template, redirect, request, session, flash
 from flask_bcrypt import Bcrypt
 
@@ -11,7 +11,7 @@ bcrypt = Bcrypt(app)
 def controller():
     if "user_id" not in session:
         return redirect("/logout")
-    return redirect("/recipes")
+    return redirect("/paintings")
 
 
 @app.route("/register")
@@ -61,17 +61,17 @@ def register_user():
     }
     user_id = User.create(data)
     session["user_id"] = user_id
-    return redirect("/recipes")
+    return redirect("/paintings")
 
 
-@app.route("/recipes")
+@app.route("/paintings")
 def dashboardPage():
     if "user_id" not in session:
         return redirect("/")
-    recipes = Recipe.get_all_Recipes()
+    paintings = Painting.get_all_Paintings()
     data = {"id": session['user_id']}
     loggeduser= User.get_user_by_id(data)
-    return render_template("dashboard.html", recipes=recipes, loggeduser=loggeduser)
+    return render_template("dashboard.html", paintings=paintings, loggeduser=loggeduser)
 
 
 @app.route("/profile/<int:id>")
@@ -114,7 +114,7 @@ def delete():
     if "user_id" not in session:
         return redirect("/")
     data = {"id": session['user_id']}
-    Recipe.delete_users_recipe(data)
+    Painting.delete_users_painting(data)
     User.delete_user(data)
     return redirect("/logout")
 

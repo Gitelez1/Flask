@@ -1,13 +1,11 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-import re	# the regex module
-# create a regular expression object that we'll use later   
+import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 
 class User:
-    db_name = "recipes"
-
+    db_name = "painting"
     def __init__(self, data):
         self.id = data["id"]
         self.username = data["username"]
